@@ -1,0 +1,218 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title ">Simple Table</h4>
+                      <p class="card-category"> Here is a subtitle for this table</p>
+                  </div>
+                  <div class="card-body">
+                      <div class="table-responsive">
+                          <table class="table">
+                              <thead class=" text-primary">
+                                  <th> ID </th>
+                                  <th> Name  </th>
+                                  <th> Country </th>
+                                  <th> City </th>
+                                  <th> Salary  </th>
+                              </thead>
+                              <tbody>
+                                  <tr>
+                                      <td> 1 </td>
+                                      <td>  Dakota Rice </td>
+                                      <td> Niger</td>
+                                      <td> Oud-Turnhout </td>
+                                      <td class="text-primary"> $36,738 </td>
+                                  </tr>
+                                  <tr>
+                                      <td>  2</td>
+                                      <td>  Minerva Hooper </td>
+                                      <td>  Curaçao  </td>
+                                      <td>  Sinaai-Waas </td>
+                                      <td class="text-primary">   $23,789</td>
+                                  </tr>
+                                 
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-tabs card-header-primary">
+                    <div class="nav-tabs-navigation">
+                        <div class="nav-tabs-wrapper">
+                            <span class="nav-tabs-title">Tasks:</span>
+                            <ul class="nav nav-tabs" data-tabs="tabs">
+                                <li class="nav-item">
+                                    <a mat-button class="nav-link active" href="#profile" data-toggle="tab">
+                                        <i class="material-icons">bug_report</i> Bugs
+                                        <div class="ripple-container"></div>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a mat-button class="nav-link" href="#messages" data-toggle="tab">
+                                        <i class="material-icons">code</i> Website
+                                        <div class="ripple-container"></div>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a mat-button class="nav-link" href="#settings" data-toggle="tab">
+                                        <i class="material-icons">cloud</i> Server
+                                        <div class="ripple-container"></div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="profile">
+                            <!-- <table class="table" style="padding-top: 40px;">
+                                <thead>
+                                    <tr>
+                                        <th>Product Name</th>
+                                        
+                                        <th>Product SKU</th>
+                                        <th>Product Stock</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let product of productData">
+                                        
+                                        <td>{{product.productName}}</td>
+                                       
+                                        <td>{{product.sku}}</td>
+                                        <td>{{product.stock}}</td>
+                                        <td class="td-actions text-right">
+                                            <button mat-raised-button type="button" matTooltip="Edit Product" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                <i class="material-icons">edit</i>
+                                            </button>
+                                            <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                <i class="material-icons">close</i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                 
+                                    
+                                </tbody>
+                            </table> -->
+                        
+                            <div>
+                                <input type="text" placeholder="Search" (keyup)="search($event.target.value)">
+                              </div>
+                              
+                              <table class="table table-striped">
+                                <thead>
+                                  <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let item of filteredData.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)">
+                                    <td>{{ item.id }}</td>
+                                    <td>{{ item.productName }}</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                              
+                              <nav aria-label="Page navigation">
+                                <ul class="pagination">
+                                  <li class="page-item" [class.disabled]="currentPage === 1">
+                                    <a class="page-link" (click)="currentPage = 1">First</a>
+                                  </li>
+                                  <li class="page-item" [class.disabled]="currentPage === 1">
+                                    <a class="page-link" (click)="currentPage = currentPage - 1">Previous</a>
+                                  </li>
+                                  <li class="page-item" *ngFor="let page of getPageNumbers()" [class.active]="currentPage === page">
+                                    <a class="page-link" (click)="currentPage = page">{{ page }}</a>
+                                  </li>
+                           
+                                  <li class="page-item" [class.disabled]="currentPage === totalPages()">
+                                    <a class="page-link" (click)="currentPage = currentPage + 1">Next</a>
+                                  </li>
+                                  <li class="page-item" [class.disabled]="currentPage === totalPages()">
+                                    <a class="page-link" (click)="currentPage = totalPages()">Last</a>
+                                  </li>
+                                </ul>
+                              </nav>
+                              
+                        
+                        </div>
+                        <div class="tab-pane" id="messages">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="form-check">
+                                                <label class="form-check-label">
+                                                    <input class="form-check-input" type="checkbox" value="" checked>
+                                                    <span class="form-check-sign">
+                                                        <span class="check"></span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
+                                        </td>
+                                        <td class="td-actions text-right">
+                                            <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                <i class="material-icons">edit</i>
+                                            </button>
+                                            <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                <i class="material-icons">close</i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                   
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="tab-pane" id="settings">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="form-check">
+                                                <label class="form-check-label">
+                                                    <input class="form-check-input" type="checkbox" value="">
+                                                    <span class="form-check-sign">
+                                                        <span class="check"></span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
+                                        <td class="td-actions text-right">
+                                            <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                <i class="material-icons">edit</i>
+                                            </button>
+                                            <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                <i class="material-icons">close</i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                   
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                
+                  
+
+                </div>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>
+<script>
+    $(document).ready(function(){
+        $('#myTable').dataTable();
+    });
+    </script>
