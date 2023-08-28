@@ -12,6 +12,9 @@ export class ProductsService {
 
   }
 
+  fetchCategory(){
+    return this.http.get(this.baseURL+ "category");
+  }
   fetchProducts() {
     return this.http.get(this.baseURL+ "product");
   }

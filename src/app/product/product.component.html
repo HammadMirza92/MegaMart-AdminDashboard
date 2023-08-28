@@ -44,15 +44,15 @@
                 <div class="card-header card-header-tabs card-header-primary">
                     <div class="nav-tabs-navigation">
                         <div class="nav-tabs-wrapper">
-                            <span class="nav-tabs-title">Tasks:</span>
+                            <span class="nav-tabs-title">Categories :</span>
                             <ul class="nav nav-tabs" data-tabs="tabs">
-                                <li class="nav-item">
-                                    <a mat-button class="nav-link active" href="#profile" data-toggle="tab">
-                                        <i class="material-icons">bug_report</i> Bugs
+                                <li class="nav-item" *ngFor="let category of categoryData ">
+                                    <a mat-button class="nav-link" [ngClass]="{ 'active': selectedCatName === category.categoryName }" href="#{{category.categoryName}}" data-toggle="tab" (click)="selectCategory(category)">
+                                        <i class="material-icons">bug_report</i> {{category.categoryName}}
                                         <div class="ripple-container"></div>
                                     </a>
                                 </li>
-                                <li class="nav-item">
+                                <!-- <li class="nav-item">
                                     <a mat-button class="nav-link" href="#messages" data-toggle="tab">
                                         <i class="material-icons">code</i> Website
                                         <div class="ripple-container"></div>
@@ -63,19 +63,22 @@
                                         <i class="material-icons">cloud</i> Server
                                         <div class="ripple-container"></div>
                                     </a>
-                                </li>
+                                </li> -->
                             </ul>
                         </div>
                     </div>
                 </div>
+
                 <div class="card-body">
                     <div class="tab-content">
-                        <div class="tab-pane active" id="profile" >
+                        <div class="tab-pane active" >
                     
                             <div *ngIf="productData!=null">
 
                               <div>
-                                <input type="text" placeholder="Search" (keyup)="search($event.target.value)">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput type="text" placeholder="Search" (keyup)="search($event.target.value)">
+                                </mat-form-field>
                               </div>
                               
                               <table class="table table-striped">
@@ -118,7 +121,7 @@
                                 <h3>Ooops! No Data Found</h3>
                             </div>
                         </div>
-                        <div class="tab-pane" id="messages">
+                        <!-- <div class="tab-pane" id="messages">
                             <table class="table">
                                 <tbody>
                                     <tr>
@@ -174,7 +177,7 @@
                                    
                                 </tbody>
                             </table>
-                        </div>
+                        </div> -->
                     </div>
                 
                   
